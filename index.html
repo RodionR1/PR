@@ -1,0 +1,27 @@
+def euro_diffusion(data):
+    days_needed = []
+    
+    for country, info in data.items():
+        days = 0
+        while True:
+            info['population'] += 1
+            days += 1
+            if info['population'] >= 1000000:
+                break
+        days_needed.append((country, days))
+    
+    # Сортировка по количеству дней
+    days_needed.sort(key=lambda x: x[1])
+    
+    return days_needed
+
+# Тестовые данные
+data = {
+    'Ukraine': {'population': 100000},
+    'Polish': {'population': 210000},
+    'English': {'population': 600000},
+    'Spain': {'population': 98000},
+}
+result = euro_diffusion(data)
+for country, days in result:
+    print(country, days)
