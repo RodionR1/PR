@@ -4,7 +4,7 @@ def euro_diffusion(data):
     for country, info in data.items():
         days = 0
         while True:
-            info['population'] += 1
+            info['population'] += info['population'] * 0.01
             days += 1
             if info['population'] >= 1000000:
                 break
@@ -18,8 +18,8 @@ def euro_diffusion(data):
 # Тестовые данные
 data = {
     'Ukraine': {'population': 100000},
-    'Polish': {'population': 210000},
-    'English': {'population': 600000},
+    'Poland': {'population': 210000},
+    'England': {'population': 600000},
     'Spain': {'population': 98000},
 }
 result = euro_diffusion(data)
